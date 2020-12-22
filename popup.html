@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #reveal-recipe-button {
+        background-color: #e33d26;
+        border-radius: 3px;
+        padding: 10px;
+        color: #fff;
+        text-align: center;
+        font-family: Verdana;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      #reveal-recipe-button.disabled {
+        background-color: #eaf0f6;
+        color: #b0c1d4;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+      #reveal-recipe-button:hover {
+        background-color: #be1e08;
+      }
+      body {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="reveal-recipe-button">Show me this recipe</div>
+    <script src="popup.js"></script>
+  </body>
+</html>
