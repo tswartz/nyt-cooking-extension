@@ -15,13 +15,13 @@ function handleRecipeRevealed(response) {
 }
 
 chrome.tabs.query({active: true}, tabs => {
-  const url = tabs[0].url;
+  const { url, id } = tabs[0] || {};
   if (url && url.match('cooking.nytimes.com')) {
-    chrome.tabs.sendMessage(tabs[0].id, {type: 'EXTENSION_OPENED'}, handleRecipeRevealed);
+    chrome.tabs.sendMessage(id, {type: 'GET_RECIPE_REVEALED'}, handleRecipeRevealed);
     const revealRecipeButton = getRevealRecipeButton();
     revealRecipeButton.classList.remove('disabled');
     revealRecipeButton.onclick = function(element) {
-      chrome.tabs.sendMessage(tabs[0].id, {type: 'REVEAL_RECIPE'}, handleRecipeRevealed);
+      chrome.tabs.sendMessage(id, {type: 'REVEAL_RECIPE'}, handleRecipeRevealed);
     };
   }
 });

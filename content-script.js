@@ -26,7 +26,7 @@ function checkIfRecipeRevealed() {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if (request && request.type == 'EXTENSION_OPENED') {
+    if (request && request.type == 'GET_RECIPE_REVEALED') {
       sendResponse({ recipeRevealed: checkIfRecipeRevealed() });
     }
     if (request && request.type == 'REVEAL_RECIPE') {
