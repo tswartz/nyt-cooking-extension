@@ -1,5 +1,13 @@
+function getModal() {
+  return document.querySelector('.nytc---modal-window---windowContainer');
+}
+
+function getContainer() {
+  return document.querySelector('#container');
+}
+
 function revealRecipe() {
-  const modal = document.querySelector('.nytc---modal-window---windowContainer');
+  const modal = getModal();
   if (modal) {
     modal.remove();
   }
@@ -11,22 +19,20 @@ function revealRecipe() {
 }
 
 function checkIfRecipeRevealed() {
-  const modal = document.querySelector('.nytc---modal-window---windowContainer');
-  const container = document.querySelector('#container');
+  const modal = getModal();
+  const container = getContainer();
   return !modal && container.style.overflowY === 'scroll' && container.style.height;
 }
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request && request.type == 'EXTENSION_OPENED') {
-      if (checkIfRecipeRevealed()) {
-        chrome.runtime.sendMessage({ type: 'RECIPE_REVEALED' });
-      }
+      sendResponse({ recipeRevealed: checkIfRecipeRevealed() });
     }
     if (request && request.type == 'REVEAL_RECIPE') {
       revealRecipe();
       if (checkIfRecipeRevealed()) {
-        chrome.runtime.sendMessage({ type: 'RECIPE_REVEALED' });
+        sendResponse({ recipeRevealed: true });
       }
     }
   }

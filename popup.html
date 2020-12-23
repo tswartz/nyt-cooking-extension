@@ -21,13 +21,21 @@
       #reveal-recipe-button:hover {
         background-color: #be1e08;
       }
+      #revealed-text {
+        display: none;
+        font-size: 20px;
+        text-align: center;
+        font-family: georgia;
+        padding: 10px;
+      }
       body {
         width: 200px;
       }
     </style>
   </head>
   <body>
-    <div id="reveal-recipe-button">Show me this recipe</div>
+    <div id="reveal-recipe-button" class="disabled">Show me this recipe</div>
+    <div id="revealed-text">Bon appetit!</div>
     <script src="popup.js"></script>
   </body>
 </html>
