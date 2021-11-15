@@ -14,7 +14,7 @@ function handleRecipeRevealed(response) {
   }
 }
 
-chrome.tabs.query({active: true}, tabs => {
+chrome.tabs.query({active: true, currentWindow: true}, tabs => {
   const { url, id } = tabs[0] || {};
   if (url && url.match('cooking.nytimes.com')) {
     chrome.tabs.sendMessage(id, {type: 'GET_RECIPE_REVEALED'}, handleRecipeRevealed);
