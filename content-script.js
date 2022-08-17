@@ -1,9 +1,9 @@
 function getModal() {
-  return document.querySelector('.nytc---modal-window---windowContainer');
+  return document.querySelector('[class^="modal_modal-window-container"]');
 }
 
 function getContainer() {
-  return document.querySelector('#container');
+  return document.querySelector('main');
 }
 
 function revealRecipe() {
@@ -11,7 +11,7 @@ function revealRecipe() {
   if (modal) {
     modal.remove();
   }
-  const container = document.querySelector('#container');
+  const container = getContainer();
   if (container) {
     container.style.overflowY = 'scroll';
     container.style.height = '1000px';
