@@ -2,12 +2,12 @@
   "name": "NYT Cooking Recipe Revealer",
   "version": "1.0",
   "description": "Reveal the best recipes",
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": "icon-30.png"
   },
   "permissions": [
-    "tabs", "https://*.nytimes.com/*", "http://*.nytimes.com/*"
+    "activeTab"
   ],
   "content_scripts": [
     {
@@ -15,5 +15,5 @@
       "js": ["content-script.js"]
     }
   ],
-  "manifest_version": 2
+  "manifest_version": 3
 }
