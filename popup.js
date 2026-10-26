@@ -17,7 +17,6 @@ function handleRecipeRevealed(response) {
 chrome.tabs.query({active: true, currentWindow: true}, tabs => {
   const { url, id } = tabs[0] || {};
   if (url && url.match('cooking.nytimes.com')) {
-    console.log('sending message');
     chrome.tabs.sendMessage(id, {type: 'GET_RECIPE_REVEALED'}, handleRecipeRevealed);
     const revealRecipeButton = getRevealRecipeButton();
     revealRecipeButton.classList.remove('disabled');
